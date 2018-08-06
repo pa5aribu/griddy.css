@@ -1,0 +1,11 @@
+{
+  "name": "griddy.css",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+	"scripts": {
+		"start": "yarn run griddy | yarn run demo",
+		"griddy": "stylus -w --include-css stylus/griddy.styl -o dist/griddy.css",
+		"demo": "stylus -w --include-css stylus/demo.styl -o css/demo.css"
+	}
+}

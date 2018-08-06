@@ -1,0 +1,19 @@
+w-mobile-small = 480px
+w-mobile = 768px
+w-tablet = 992px
+
+media_queries = {
+	mobile-small	: "only screen and (max-width: w-mobile-small)",
+	mobile				: "only screen and (max-width: w-mobile)",
+	mobile-only		: "only screen and (min-width: w-mobile-small + 1) and (max-width: w-mobile)",
+	tablet				: "only screen and (min-width: w-mobile + 1) and (max-width: w-tablet)",
+	desktop				: "only screen and (min-width: w-tablet + 1)",
+}
+
+breakpoint(breakpoints)
+	conditions = ()
+	for breakpoint in breakpoints
+		push(conditions, media_queries[breakpoint])
+	conditions = join(", ", conditions)
+	@media conditions
+		{block}

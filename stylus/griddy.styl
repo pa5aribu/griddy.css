@@ -1,0 +1,29 @@
+// author: Bhakti Al Akbar, balapa95@gmail.com
+// griddy.css - A modern grid system based on CSS grid
+
+@import 'mixins/breakpoints'
+
+.grow
+	display grid
+	grid-gap 20px
+
+	&.--no-gap
+		grid-gap 0
+
+	// dekstop breakpoint
+	+breakpoint(desktop)
+		for num in (2..12)
+			&.gcol-md-{num}
+				grid-template-columns repeat(num, 1fr)
+
+	// tablet breakpoint
+	+breakpoint(tablet)
+		for num in (2..12)
+			&.gcol-sm-{num}
+				grid-template-columns repeat(num, 1fr)
+
+	// mobile breakpoint
+	+breakpoint(mobile)
+		for num in (2..12)
+			&.gcol-xs-{num}
+				grid-template-columns repeat(num, 1fr)

@@ -1,0 +1,7 @@
+.box {
+  height: 100px;
+  background: #ff3838;
+}
+.box-list {
+  grid-gap: 1px;
+}
