@@ -1,29 +1,92 @@
-// author: Bhakti Al Akbar, balapa95@gmail.com
-// griddy.css - A modern grid system based on CSS grid
+/*
+	griddy.css - A modern grid system based on CSS grid
+
+	author: Bhakti Al Akbar
+	email: balapa95@gmail.com
+*/
 
 @import 'mixins/breakpoints'
 
-.grow
+breakpoints = {
+	'lg' : 'large'
+	'md' : 'medium',
+	'sm' : 'small',
+	'xs' : 'extra-small'
+}
+
+gridArray = 1..12
+gridGap = 15px
+
+.grid
 	display grid
-	grid-gap 20px
 
-	&.--no-gap
-		grid-gap 0
 
-	// dekstop breakpoint
-	+breakpoint(desktop)
-		for num in (2..12)
-			&.gcol-md-{num}
-				grid-template-columns repeat(num, 1fr)
 
-	// tablet breakpoint
-	+breakpoint(tablet)
-		for num in (2..12)
-			&.gcol-sm-{num}
-				grid-template-columns repeat(num, 1fr)
 
-	// mobile breakpoint
-	+breakpoint(mobile)
-		for num in (2..12)
-			&.gcol-xs-{num}
-				grid-template-columns repeat(num, 1fr)
+	// ******************** //
+	// gaps //
+	// ******************** //
+
+	&.grid--gap
+		grid-gap gridGap
+
+		&-none
+			grid-gap 0
+
+		// looping breakpoints
+		for prop, value in breakpoints
+			+breakpoint(value)
+				&-{prop}
+					grid-gap gridGap
+
+				&-{prop}-none
+					grid-gap 0
+
+
+
+
+	// ******************** //
+	// columns
+	// ******************** //
+
+	for num in gridArray
+		&.cols-{num}
+			grid-template-columns repeat(num, 1fr)
+
+	// loop breakpoints
+	for prop, value in breakpoints
+		+breakpoint(value)
+			for num in gridArray
+				// would return cols-lg-12 (example)
+				&.cols-{prop}-{num}
+					grid-template-columns repeat(num, 1fr)
+
+
+
+
+	// ******************** //
+	// columns start end
+	// ******************** //
+
+	// span
+	for num in gridArray
+		.span-{num}
+			grid-column span num
+
+		.col-start-{num}
+			grid-column-start num
+
+		.col-end-{num}
+			grid-column-end num
+
+	for prop, value in breakpoints
+		+breakpoint(value)
+			for num in gridArray
+				.span-{prop}-{num}
+					grid-column span num
+
+				.col-start-{prop}-{num}
+					grid-column-start num
+
+				.col-end-{prop}-{num}
+					grid-column-end span num

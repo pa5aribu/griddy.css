@@ -1,13 +1,14 @@
-w-mobile-small = 480px
-w-mobile = 768px
-w-tablet = 992px
+sm = 480px			// mobile
+md = 768px			// tablet
+lg = 992px			// laptop
+xl = 1024px			// desktop
 
 media_queries = {
-	mobile-small	: "only screen and (max-width: w-mobile-small)",
-	mobile				: "only screen and (max-width: w-mobile)",
-	mobile-only		: "only screen and (min-width: w-mobile-small + 1) and (max-width: w-mobile)",
-	tablet				: "only screen and (min-width: w-mobile + 1) and (max-width: w-tablet)",
-	desktop				: "only screen and (min-width: w-tablet + 1)",
+	extra-large	: "only screen and (min-width: xl)"
+	large				: "only screen and (min-width: lg + 1)",
+	medium			: "only screen and (min-width: md + 1) and (max-width: lg)",
+	small				: "only screen and (min-width: sm + 1) and (max-width: md)",
+	extra-small	: "only screen and (max-width: sm)"
 }
 
 breakpoint(breakpoints)

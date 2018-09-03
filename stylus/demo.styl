@@ -2,9 +2,8 @@ colorArray = #ff3838, #3ae374, #17c0eb, #ff9f1a, #8c7ae6, #718093
 
 .box {
 	height 100px
-	background colorArray[0]
 }
 
-.box-list {
-	grid-gap 1px
-}
+for color, i in colorArray
+	.box:nth-child({i + 1})
+		background color
